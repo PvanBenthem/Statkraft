@@ -1,0 +1,301 @@
+library(tidyverse)
+library(broom)
+library(GGally)
+
+#creating dataframe with potatoes
+dat1 <- data.frame(1:17)
+dat1 <- dat1 %>%
+	rename(index=X1.17)
+
+dat1$Crop <- c("Potatoes")
+dat1$shadow_yield <- c(0, 0, 0, 12, 12, 12, 26, 26, 26, 50, 50, 50, 0 ,30, 0, 30, 100)
+dat1$crop_yield <- c(100, 100, 100, 87, 98.63, 47.22, 89.55, 54.69, 45.04, 81.18, 63.48, 30.35, 100, 81.27, 100, 110.75, 0)
+dat1 <- dat1[,-1]
+
+#winter wheat
+dat2 <- data.frame(1:6)
+dat2 <- dat2 %>%
+	rename(index=X1.6)
+
+dat2$Crop <- c("Winter wheat")
+dat2$shadow_yield <- c(0, 7, 28, 51, 55, 100)
+dat2$crop_yield <- c(100, 120, 78, 119, 61, 0)
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#gras clover
+dat2 <- data.frame(1:13)
+dat2 <- dat2 %>%
+	rename(index=X1.13)
+
+dat2$Crop <- c("Grass clover")
+dat2$shadow_yield <- c(0, 30, 0, 30, 0, 30, 50, 70, 0, 30, 50, 80, 100)
+dat2$crop_yield <- c(100, 94.92, 100, 91.95, 100, 101.36, 81.08, 63.35, 100, 78.96, 80.4187, 37.09575, 0)
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#corn
+dat2 <- data.frame(1:8)
+dat2 <- dat2 %>%
+	rename(index=X1.8)
+
+dat2$Crop <- c("Corn")
+dat2$shadow_yield <-  c(0, 12, 26, 50, 0, 5, 10, 100)
+dat2$crop_yield <- c(100, 81.9, 81.14, 55.72, 100, 104.9, 96.9, 0)
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#sugar beets
+
+dat2 <- data.frame(1:7)
+dat2 <- dat2 %>%
+	rename(index=X1.7)
+
+dat2$Crop <- c("Sugar beets")
+dat2$shadow_yield <-  c(0, 24.2129, 39.886, 0, 23.738, 31.9918, 100)
+dat2$crop_yield <- c(100, 63.823, 27.021, 100, 82.071, 63.41, 0)
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#onions
+
+dat2 <- data.frame(1:5)
+dat2 <- dat2 %>%
+	rename(index=X1.5)
+
+dat2$Crop <- c("Onions")
+dat2$shadow_yield <-   c(0, 30, 0, 30, 100)
+dat2$crop_yield <- c(100, 80.58, 100, 90.51, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#Barley
+
+dat2 <- data.frame(1:13)
+dat2 <- dat2 %>%
+	rename(index=X1.13)
+
+dat2$Crop <- c("Barley")
+dat2$shadow_yield <-   c(0, 10, 50, 0, 25, 50, 0, 40, 90, 0, 40, 90, 100)
+dat2$crop_yield <- c(100, 101.75, 189.84, 100, 101.7786, 118.774, 100, 82.8125, 75.3125, 100, 88.808, 73.2851, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+# Peas 
+dat2 <- data.frame(1:7)
+dat2 <- dat2 %>%
+	rename(index=X1.7)
+
+dat2$Crop <- c("Peas")
+dat2$shadow_yield <-   c(0, 19, 35, 0 , 19, 35, 100)
+dat2$crop_yield <- c(100, 75, 23, 100, 99, 53, 0 )
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#lettuce 
+
+dat2 <- data.frame(1:15)
+dat2 <- dat2 %>%
+	rename(index=X1.15)
+
+dat2$Crop <- c("Lettuce")
+dat2$shadow_yield <-   c(0, 30, 70, 0, 30, 70, 0, 35, 30, 20, 0, 35, 30, 20, 100 )
+dat2$crop_yield <- c(100, 81, 58, 100 ,99, 79, 100, 77 ,78, 77, 100, 86, 69, 82, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#spinach
+dat2 <- data.frame(1:6)
+dat2 <- dat2 %>%
+	rename(index=X1.6)
+
+dat2$Crop <- c("Spinach")
+dat2$shadow_yield <-   c(0, 24, 46, 51, 71, 100)
+dat2$crop_yield <- c(100, 99, 76, 73, 48, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#green bean
+dat2 <- data.frame(1:16)
+dat2 <- dat2 %>%
+	rename(index=X1.16)
+
+dat2$Crop <- c("Green beans")
+dat2$shadow_yield <-   c(0, 24, 46, 51, 71, 0, 24, 46, 51, 71, 0, 24, 46, 51, 71, 100)
+dat2$crop_yield <- c(100, 84, 77, 60, 45, 100, 85, 72, 61, 50, 100, 82, 55, 54, 50, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#Asparagus 
+dat2 <- data.frame(1:6)
+dat2 <- dat2 %>%
+	rename(index=X1.6)
+
+dat2$Crop <- c("Asparagus")
+dat2$shadow_yield <-   c(0, 24, 46, 51, 71, 100)
+dat2$crop_yield <- c(100, 99, 79, 75, 48, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#Broccoli
+dat2 <- data.frame(1:7)
+dat2 <- dat2 %>%
+	rename(index=X1.7)
+
+dat2$Crop <- c("Broccoli")
+dat2$shadow_yield <-   c(0, 35, 0, 35, 0, 35, 100)
+dat2$crop_yield <-  c(100, 93.33319333, 100, 106.2500752, 100, 82.25792794, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#Cauliflower
+dat2 <- data.frame(1:9)
+dat2 <- dat2 %>%
+	rename(index=X1.9)
+
+dat2$Crop <- c("Cauliflower")
+dat2$shadow_yield <-   c(0, 38, 50, 60, 0, 38, 50, 60, 100)
+dat2$crop_yield <- c(100 ,97.64705882, 95.52941176, 90.11764706, 100, 94.91525424, 91.52542373, 88.13559322, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#Celeriac
+dat2 <- data.frame(1:5)
+dat2 <- dat2 %>%
+	rename(index=X1.5)
+
+dat2$Crop <- c("Celeriac")
+dat2$shadow_yield <-   c(0, 30, 0, 30, 100)
+dat2$crop_yield <- c(100 , 81.1836, 100, 111.1416, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#Cabbage
+dat2 <- data.frame(1:5)
+dat2 <- dat2 %>%
+	rename(index=X1.5)
+
+dat2$Crop <- c("Cabbage")
+dat2$shadow_yield <-   c(0, 45, 0, 45, 100)
+dat2$crop_yield <- c(100 , 90.3, 100, 98.8, 0)
+
+dat2 <- dat2[,-1]
+
+dat1 <- rbind(dat1, dat2)
+
+#Fitting with NLS
+
+
+#plot results 
+
+#show(dat1)
+
+g1 <- ggplot(dat1, aes(x = shadow_yield, y = crop_yield, color = Crop)) + geom_point(size = 3) + ggtitle("Crops yield vs shadow") + 			xlab("Level of shade (%)") + ylab("Relative Yield (%)") +  theme(plot.title = element_text(hjust = 0.5)) + ylim(0, 120)+
+		theme_bw(base_size = 16) 
+
+g1
+
+highlight_df_p <- dat1 %>% 
+             filter(crop_yield >100)
+
+#show(highlight_df_p)
+
+g2 <- ggplot(dat1, aes(x = shadow_yield, y = crop_yield)) + geom_point(color="cornflowerblue", size = 3) + 
+	 geom_smooth(method = "lm" ,linetype = "dotted") +
+	#geom_point(data=highlight_df_p, aes(x = shadow_yield, y = crop_yield, color='red', size=3) + 
+	geom_point(data=highlight_df_p, aes( x = shadow_yield, y = crop_yield), color='red', size=3) +   
+	ggtitle("Crops yield vs shadow") + 	xlab("Level of shade (%)") + ylab("Relative Yield (%)") +  
+	theme(plot.title = 	element_text(hjust = 0.5)) + ylim(0, 120) +
+		theme_bw(base_size = 16) 
+
+g2
+
+g3 <- ggplot(dat1, aes(x = shadow_yield, y = crop_yield)) + geom_point(color="cornflowerblue", size = 1.5) + 
+	 geom_smooth(method = "lm" ,linetype = "dotted" , se= F) +
+	#geom_point(data=highlight_df_p, aes(x = shadow_yield, y = crop_yield, color='red', size=3) + 
+	#geom_point(data=highlight_df_p, aes( x = shadow_yield, y = crop_yield), color='red', size=3) +   
+	ggtitle("Crops yield vs shadow") + 	xlab("Level of shade (%)") + ylab("Relative Yield (%)") +  
+	theme(plot.title = 	element_text(hjust = 0.5)) + ylim(0, 120) +
+		theme_bw(base_size = 16) + geom_vline(xintercept = 30, linetype = "dotted" , color = 'red') + facet_wrap(vars(Crop))
+ 
+
+g3
+
+#geom_text(data = data.frame(shadow_yield = 30, crop_yield = predict(lm(crop_yield ~ shadow_yield, dat1), newdata = data.frame(shadow_yield = 30))), aes(x = shadow_yield, y = crop_yield, label = paste(round(crop_yield, 2), "%")), color = "red", size = 6)  + facet_wrap(vars(Crop)) 
+
+dat1 <- dat1[-59,]
+
+
+reg <- lm(crop_yield~shadow_yield, data = dat1)
+summary(reg)
+
+res <- reg$residuals
+#g4 <- ggplot(data.frame(res)) + geom_qq() + geom_qq_line()
+
+plot(reg)
+shapiro.test(res)
+
+
+fit <- reg$fitted.values
+cook <- cooks.distance(reg)
+
+
+# repeat for the numner of reps
+reps <- 5000
+n.data <- nrow(dat1)
+8
+#initialize intercept and slope
+interc <- 0
+slope <- 0
+for (count in 1:reps) {
+ #Randomly select a vector of row indices (same size as data set)
+ row_index <- sample(1:n.data, replace = TRUE, size = n.data)
+ #resample MwH and CDD at the rows defined in row-index
+ dat1_star <- dat1[row_index, ]
+ #calculate slope and intercept for the new samples
+ interc[count] <- lm(crop_yield ~ shadow_yield, data = dat1_star)$coefficients[1]
+ slope[count] <- lm(crop_yield ~ shadow_yield, data = dat1_star)$coefficients[2]
+}
+ggplot(data = data.frame(slope), aes(x= slope)) + geom_histogram()
+# calculate the standard deviation of all slope and intercepts
+se_slope <- sd(slope)
+se_interc <- sd(interc)
+# Bootstrap 0.025 and 0.975 quantiles for the confidence interval
+conf_slope_bs <- quantile(slope, probs = c(0.025,0.975))
+conf_int_bs <- quantile(interc, probs = c(0.025,0.975))
+# direct calculation of cf
+#conf_slope <- 97.988 + qt(c(0.025, 0.972), df = 873)* 1.167
+#conf_int <- 372.949 + qt(c(0.025, 0.972), df = 873)* 22.370
+
+
+# pw <- ggplot(df_w, aes(x = w_s, y = w_y)) + geom_point(color="cornflowerblue", size=4) + stat_smooth(method="lm", se=TRUE, fill=NA,
+#                formula=y ~ poly(x, 2, raw=TRUE),colour="cornflowerblue",linetype = "dotted") + ylim(0, 200) + 
+#                geom_point(data=highlight_df_w, aes(x=w_s, y=w_y), color='red', size=4) + ggtitle("Apples") + 
+#                xlab("Level of shade (%)") + ylab("Relative Yield (%)") +  theme(plot.title = element_text(hjust = 0.5)) +
+#		theme_bw(base_size = 16)   
+
+#pw
